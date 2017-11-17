@@ -11,12 +11,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.png
-[image3]: ./examples/sliding_windows.png
-[image4]: ./examples/sliding_window.png
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
+[image2]: ./examples/HOG_example1.png
+[image3]: ./examples/HOG_example2.png
+[image4]: ./examples/sliding_windows.png
+[image5]: ./examples/results.png
+[image6]: ./examples/bboxes_heat_result.png
 [video1]: ./project_video_annotated.mp4
 
 
@@ -38,6 +37,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 Here is an example using the `GRAY` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(16, 16)` and `cells_per_block=(2, 2)`:
 
 ![alt text][image2]
+![alt text][image3]
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
@@ -56,13 +56,14 @@ I measured sizes of vehicles and decided to search (code cell 9) in bottom half 
 96x96
 72x72
 
-![alt text][image3]
+![alt text][image4]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working. What did you do to optimize the performance of your classifier?
 
 I plaed with window sizes and HOG features to ptimize performance and accuracy of the detection, after these experiments I got a nice result. Here are some example images:
 
-![alt text][image4]
+![alt text][image5]
+
 ---
 
 ### Video Implementation
@@ -72,20 +73,13 @@ Here's a [link to my video result](./project_video_annotated.mp4)
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+I recorded the positions of positive detections in each frame of the video. From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap. After that I created average box. Also I used boxes from ten last frames.
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 ### Here are six frames and their corresponding heatmaps:
 
-![alt text][image5]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
 
 ---
 
