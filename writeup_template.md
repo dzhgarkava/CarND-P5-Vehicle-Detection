@@ -51,16 +51,13 @@ I decided to use SVM classifier (code cell 8) with rbf kernel and default sklear
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search. How did you decide what scales to search and how much to overlap windows?
 
-I measured sizes of vehicles and decided to search (code cell 9) in bottom half of the image in 3 different scales:
-128x128
-96x96
-72x72
+I measured sizes of vehicles and decided to search (code cell 9) in bottom half of the image in 3 different scales: 128x128, 96x96, 72x72
 
 ![alt text][image4]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working. What did you do to optimize the performance of your classifier?
 
-I plaed with window sizes and HOG features to ptimize performance and accuracy of the detection, after these experiments I got a nice result. Here are some example images:
+I plaed with window sizes and HOG features to optimize performance and accuracy of the detection, after these experiments I got a nice result. Here are some example images:
 
 ![alt text][image5]
 
